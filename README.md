@@ -129,7 +129,7 @@ community\_monitoring\_api/
 
 ## API Endpoints
 
-| Method | Endpoint       | Description                       |
+| Method | Endpoint |Description|
 | ------ | -------------- | --------------------------------- |
 | POST   | `/patients/`   | Add a new patient                 |
 | POST   | `/interviews/` | Create an interview with services |
