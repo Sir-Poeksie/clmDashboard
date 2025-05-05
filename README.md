@@ -104,50 +104,44 @@ community\_monitoring\_api/
 ````
 
 2. **Import the SQL file into MySQL**
-
-   ```bash
+    ```bash
    mysql -u root -p < community_monitoring.sql
-   ```
-
+```
 3. **Configure the database connection**
 
    Open `app/database.py` and update the credentials:
 
    ```python
    DATABASE_URL = "mysql+mysqlconnector://<username>:<password>@localhost/community_monitoring"
-   ```
+```
 
 4. **Install Python dependencies**
-
    ```bash
    pip install -r requirements.txt
-   ```
+```
 
 5. **Run the FastAPI server**
-
    ```bash
    uvicorn app.main:app --reload
-   ```
+```
 
 ---
 
-## 📌 API Endpoints
+## API Endpoints
 
 | Method | Endpoint       | Description                       |
 | ------ | -------------- | --------------------------------- |
 | POST   | `/patients/`   | Add a new patient                 |
 | POST   | `/interviews/` | Create an interview with services |
 
-### ✅ Example Request Body – `/patients/`
-
-```json
+### Example Request Body – `/patients/`
 {
   "gender": "Female",
   "age": 19
 }
 ```
 
-### ✅ Example Request Body – `/interviews/`
+### Example Request Body – `/interviews/`
 
 ```json
 {
