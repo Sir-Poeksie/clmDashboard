@@ -99,4 +99,9 @@ TODO: Check how to do this by imbedding image or alternately link to image in th
 3. **Import SQL file into MySQL**  
    ```bash
   mysql -u root -p community_monitoring < community_monitoring.sql
-
+4. **Install dependencies**  
+   ```bash
+  pip install -r requirements.txt
+5. **Run the FastAPI server**  
+   ```bash
+ uvicorn app.main:app --reload
