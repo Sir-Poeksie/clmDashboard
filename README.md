@@ -1,18 +1,19 @@
-# 🧾 Youth & Women Led Community Led Monitoring Programme
+# Youth Community Led Monitoring Programme
 
-This system tracks public health facilities monitored through patient interviews conducted by data capturers. Data focuses on youth-specific services segmented by gender, age, and facility location within the country in alignment with the **South African National AIDS Council’s** mandate as outlined in the **National Strategic Plan 2024–2028**.
+This system tracks public health facilities monitored through patient interviews conducted by data capturers. Data focuses on youth-specific services segmented by gender, age, and facility location within the country in alignment with the **South African National AIDS Council’s** mandate outlined in the **National Strategic Plan 2024–2028**.
 
 ---
-## 📁 Project Structure
 
-This project is divided into two main components:
+## Project Structure
+
+This project is divided into two parts:
 
 1. **MySQL Database Design**
 2. **FastAPI-based CRUD API**
 
 ---
 
-## 📊 Features
+## Features
 
 - Capture interviews conducted at public health facilities
 - Segment patients by **age**, **gender**, and **location**
@@ -22,7 +23,7 @@ This project is divided into two main components:
 
 ---
 
-## Question 1: MySQL Database Use Case
+## MySQL Database Design Use Case:
 A community-led monitoring programme where data capturers conduct interviews with patients at health facilities to monitor youth-specific health services.
 
 ### Tables Included
@@ -42,40 +43,45 @@ A community-led monitoring programme where data capturers conduct interviews wit
 - `community_monitoring.sql`
 
 Includes:
+- `CREATE DATABASE` and `USE` statements
 - `CREATE TABLE` statements with primary and foreign key constraints
-- Proper data types and integrity rules
+- Proper data types and validation rules
 - Sample data for all tables
 
 ### ERD Diagram
-TODO: Check how to do this by imbedding image or alternately link to image in the docs folder
+
+TODO:[Insert a link & check how to add screenshot of your ERD here]
 
 ---
 
-## Question 2: FastAPI CRUD API
+## FastAPI CRUD API
 
-### Technologies Used
+### Technologies Used:
 
 - **FastAPI** – Python web framework
 - **SQLAlchemy** – ORM for Python
 - **MySQL** – Relational database
 - **Uvicorn** – ASGI server
 
-### Folder Structure
-    community_monitoring_api/
-    ├── app/
-    │   ├── __init__.py
-    │   ├── main.py
-    │   ├── models.py
-    │   ├── schemas.py
-    │   ├── crud.py
-    │   └── database.py
-    ├── docs/
-    │   ├── clmERD.drawio
-    │   ├── main.py
-    ├── community_monitoring.sql
-    ├── requirements.txt
-    └── README.md
+---
 
+### 📂 Folder Structure
+
+```
+
+community\_monitoring\_api/
+├── app/
+│   ├── **init**.py
+│   ├── main.py            # FastAPI app
+│   ├── models.py          # SQLAlchemy models
+│   ├── schemas.py         # Pydantic schemas
+│   ├── crud.py            # CRUD operations
+│   └── database.py        # DB connection setup
+├── community\_monitoring.sql
+├── requirements.txt
+└── README.md
+
+````
 
 ---
 
@@ -87,21 +93,102 @@ TODO: Check how to do this by imbedding image or alternately link to image in th
 - MySQL Server
 - Pip package manager
 
-### Steps
+---
 
-1. **Clone the repo**  
+### Setup Steps
+
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/Sir-Poeksie/clmDashboard.git
-   cd clmDashboard
-2. **Import SQL file into MySQL**  
+   git clone https://github.com/yourusername/community-led-monitoring.git
+   cd community-led-monitoring
+````
+
+2. **Import the SQL file into MySQL**
+
    ```bash
-  mysql -u root -p community_monitoring < community_monitoring.sql
-3. **Import SQL file into MySQL**  
+   mysql -u root -p < community_monitoring.sql
+   ```
+
+3. **Configure the database connection**
+
+   Open `app/database.py` and update the credentials:
+
+   ```python
+   DATABASE_URL = "mysql+mysqlconnector://<username>:<password>@localhost/community_monitoring"
+   ```
+
+4. **Install Python dependencies**
+
    ```bash
-  mysql -u root -p community_monitoring < community_monitoring.sql
-4. **Install dependencies**  
+   pip install -r requirements.txt
+   ```
+
+5. **Run the FastAPI server**
+
    ```bash
-  pip install -r requirements.txt
-5. **Run the FastAPI server**  
-   ```bash
- uvicorn app.main:app --reload
+   uvicorn app.main:app --reload
+   ```
+
+---
+
+## 📌 API Endpoints
+
+| Method | Endpoint       | Description                       |
+| ------ | -------------- | --------------------------------- |
+| POST   | `/patients/`   | Add a new patient                 |
+| POST   | `/interviews/` | Create an interview with services |
+
+### ✅ Example Request Body – `/patients/`
+
+```json
+{
+  "gender": "Female",
+  "age": 19
+}
+```
+
+### ✅ Example Request Body – `/interviews/`
+
+```json
+{
+  "patient_id": 1,
+  "facility_id": 1,
+  "capturer_id": 1,
+  "interview_date": "2025-05-01",
+  "service_ids": [1, 2]
+}
+```
+
+---
+
+## 🧪 Sample Data Included
+
+The SQL file includes realistic sample data for:
+
+* Provinces (e.g., Gauteng, KwaZulu-Natal)
+* Districts, SubRegions, Facilities
+* Patients and Data Capturers
+* Youth Services (e.g., HIV Testing, Mental Health)
+* Interview records
+
+---
+
+## 🤝 Contributors
+
+* **Mpumelelo Theophilas Nxazonke** – Database design & API development
+
+---
+
+## 📃 License
+
+This project is open source and free to use under the [MIT License](LICENSE).
+
+---
+
+## Notes
+
+This application is built for academic and pilot implementation purposes under a **Community Led Monitoring Programme**, contributing to evidence-based advocacy for youth and women in South Africa's public health sector.
+
+```
+
+
