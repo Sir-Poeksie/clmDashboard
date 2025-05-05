@@ -103,9 +103,10 @@ community\_monitoring\_api/
    cd community-led-monitoring
 ````
 2. **Import the SQL file into MySQL**
-    ```bash
+   ```bash
    mysql -u root -p < community_monitoring.sql
-```
+````
+
 3. **Configure the database connection**
     Open `app/database.py` and update the credentials:
     ```python
