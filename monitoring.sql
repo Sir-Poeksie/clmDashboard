@@ -1,18 +1,18 @@
 
--- Create and select the database
+-- Creates and selects the database
 CREATE DATABASE IF NOT EXISTS community_monitoring;
 USE community_monitoring;
 
 -- Optional cleanup for re-runs
 DROP TABLE IF EXISTS InterviewServices, Interviews, YouthServices, DataCapturers, Patients, Facilities, SubRegions, Districts, Provinces;
 
--- Provinces Table
+-- Provinces
 CREATE TABLE Provinces (
     province_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Districts Table
+-- Districts
 CREATE TABLE Districts (
     district_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE Districts (
     FOREIGN KEY (province_id) REFERENCES Provinces(province_id)
 );
 
--- SubRegions Table
+-- SubRegions
 CREATE TABLE SubRegions (
     subregion_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE SubRegions (
     FOREIGN KEY (district_id) REFERENCES Districts(district_id)
 );
 
--- Facilities Table
+-- Facilities
 CREATE TABLE Facilities (
     facility_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE Facilities (
     FOREIGN KEY (subregion_id) REFERENCES SubRegions(subregion_id)
 );
 
--- Patients Table
+-- Patients
 CREATE TABLE Patients (
     patient_id INT AUTO_INCREMENT PRIMARY KEY,
     gender ENUM('Male', 'Female', 'Other') NOT NULL,
@@ -50,13 +50,13 @@ CREATE TABLE DataCapturers (
     contact VARCHAR(20)
 );
 
--- Youth Services Table
+-- Youth Services
 CREATE TABLE YouthServices (
     service_id INT AUTO_INCREMENT PRIMARY KEY,
     service_name VARCHAR(100) NOT NULL UNIQUE
 );
 
--- Interviews Table
+-- Interviews
 CREATE TABLE Interviews (
     interview_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT NOT NULL,

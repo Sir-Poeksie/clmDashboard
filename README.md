@@ -102,8 +102,8 @@ community\_monitoring\_api/
    git clone https://github.com/yourusername/community-led-monitoring.git
    cd community-led-monitoring
 ````
-2. **Import the SQL file into MySQL**
-   
+
+2. **Import the SQL file into MySQL**   
    ```bash
    mysql -u root -p < community_monitoring.sql
 ````
@@ -111,19 +111,16 @@ community\_monitoring\_api/
 3. **Configure the database connection**
    
     Open `app/database.py` and update the credentials:
-   
     ```python
     DATABASE_URL = "mysql+mysqlconnector://<username>:<password>@localhost/community_monitoring"
 ````
 
 4. **Install Python dependencies**
-
    ```bash
    pip install -r requirements.txt
 ````
 
 5. **Run the FastAPI server**
-   
    ```bash
    uvicorn app.main:app --reload
 ````
